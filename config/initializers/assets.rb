@@ -14,6 +14,7 @@ Rails.application.config.assets.version = "1.0"
 require "google/cloud/storage"
 
 Google::Cloud::Storage.configure do |config|
+  puts "Rails.application.credentials.gcskey.as_json: #{Rails.application.credentials.gcskey.as_json}"
   config.project_id  = "gcsbrowsertest"
   config.credentials = Rails.application.credentials.gcskey.as_json
 end
