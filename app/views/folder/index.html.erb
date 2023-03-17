@@ -1,0 +1,24 @@
+<div class="mx-auto w-4/6 max-w-7xl sm:px-6 lg:px-8 bg-slate-300 rounded-md">
+  <h1 class="font-bold text-4xl text-center h1">Explore My Bucket</h1>
+  
+  <% if params[:folder] %>
+    <%= link_to "Back", :back %>
+  <% end %>
+  
+  <ul class="list-disc list-inside">
+    <% @folders.each do |folder| %>
+      <li class="text-2xl">
+        <%= link_to "#{relative_directory(folder)}", root_path(folder: relative_directory(folder))  %>
+      </li>
+    <% end %>
+    
+    <% if @image_files %>
+      <% @image_files.each do |image| %>
+        <li class="text-2xl">
+          <%= link_to "#{image.last.basename}", image_index_path(image_url: image)  %>
+        </li>
+      <% end %>
+    <% end %>
+    
+  </ul>
+</div>
